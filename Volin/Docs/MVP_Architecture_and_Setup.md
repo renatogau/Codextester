@@ -41,6 +41,12 @@ Assets/
   Settings/
     Input/
       PlayerInputActions.inputactions
+Packages/
+  manifest.json
+  packages-lock.json
+ProjectSettings/
+  ProjectVersion.txt
+  ProjectSettings.asset
 ```
 
 ### Decisão de física: **2D (Rigidbody2D)**
