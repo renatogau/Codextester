@@ -613,3 +613,28 @@ namespace ArcadeVolley.UI
 5. Reconexão robusta:
    - estado serializável de partida;
    - rejoin no lobby com restauração de slot/time.
+
+---
+
+## 4) Modo "Blobs" (jogável antes dos assets finais)
+
+Se o foco é só provar gameplay/rede, monte tudo com placeholders:
+
+1. **Players**: `SpriteRenderer` com círculo sólido (blob), `Rigidbody2D`, `CapsuleCollider2D`, `NetworkObject`, `PlayerController`.
+2. **Bola**: círculo branco com `CircleCollider2D`, `Rigidbody2D`, `NetworkObject`, `BallController`, `BallGroundDetector`.
+3. **Chão**: 2 objetos (`GroundLeft`, `GroundRight`) com `BoxCollider2D`, `Tag = Ground`, script `CourtSideTrigger` (`-1` esquerda, `+1` direita).
+4. **Rede**: `BoxCollider2D` no meio da quadra.
+5. **Spawns**: adicionar `SpawnManager` em objeto vazio com:
+   - `playerPrefab` apontando para `NetworkPlayer`
+   - `ballPrefab` apontando para `NetworkBall`
+   - dois pontos para Time A e dois para Time B
+   - ponto de spawn da bola
+   - referência para `ScoreManager`
+6. **Score**: `ScoreManager` referenciando `BallController` da bola de rede.
+
+Scripts adicionados para essa prova rápida:
+- `Assets/Scripts/Gameplay/SpawnManager.cs`
+- `Assets/Scripts/Gameplay/BallGroundDetector.cs`
+- `Assets/Scripts/Gameplay/CourtSideTrigger.cs`
+
+Com isso, já dá para jogar online sem arte final.
