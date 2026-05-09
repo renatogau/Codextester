@@ -27,11 +27,18 @@ namespace ArcadeVolley.Gameplay
         public override void OnNetworkSpawn()
         {
             _rb = GetComponent<Rigidbody2D>();
+            EnsureConfig();
             if (IsServer)
             {
                 _netPosition.Value = _rb.position;
                 _netVelocity.Value = _rb.velocity;
             }
+        }
+
+        private void EnsureConfig()
+        {
+            if (config != null) return;
+            config = ScriptableObject.CreateInstance<MatchConfig>();
         }
 
         private void Update()

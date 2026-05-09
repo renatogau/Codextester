@@ -21,12 +21,16 @@ namespace ArcadeVolley.Core
 
         private void BuildIfNeeded()
         {
+            if (matchConfig == null)
+                matchConfig = ScriptableObject.CreateInstance<MatchConfig>();
+
             if (FindFirstObjectByType<NetworkManager>() == null)
             {
                 var nmGo = new GameObject("NetworkManager");
                 nmGo.AddComponent<UnityTransport>();
                 nmGo.AddComponent<NetworkManager>();
                 nmGo.AddComponent<NetworkBootstrap>();
+                nmGo.AddComponent<QuickStartHost>();
             }
 
             if (FindFirstObjectByType<ScoreManager>() == null)

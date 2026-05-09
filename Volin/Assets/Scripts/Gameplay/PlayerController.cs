@@ -41,6 +41,7 @@ namespace ArcadeVolley.Gameplay
         public override void OnNetworkSpawn()
         {
             _rb = GetComponent<Rigidbody2D>();
+            EnsureConfig();
 
             if (IsServer)
                 _netPosition.Value = transform.position;
@@ -49,6 +50,12 @@ namespace ArcadeVolley.Gameplay
             {
                 DisableLocalInputComponents();
             }
+        }
+
+        private void EnsureConfig()
+        {
+            if (config != null) return;
+            config = ScriptableObject.CreateInstance<MatchConfig>();
         }
 
         private void Update()
