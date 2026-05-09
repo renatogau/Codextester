@@ -46,7 +46,6 @@ Packages/
   packages-lock.json
 ProjectSettings/
   ProjectVersion.txt
-  ProjectSettings.asset
 ```
 
 ### Decisão de física: **2D (Rigidbody2D)**
@@ -656,3 +655,11 @@ Para acelerar prova de funcionamento, use uma cena vazia chamada `QuickPlay.unit
 - chão/rede com colliders conforme seção de Blobs
 
 Objetivo: validar que a partida online sobe, jogadores entram e o loop de ponto funciona.
+
+### Criação rápida da cena pelo menu (Editor)
+
+Foi adicionado o menu:
+
+`ArcadeVolley/Create QuickPlay Scene`
+
+Ele cria e salva automaticamente `Assets/Scenes/QuickPlay.unity` com o objeto `QuickPlayBootstrap` + `QuickPlaySceneBuilder`.
