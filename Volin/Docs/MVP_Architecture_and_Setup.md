@@ -638,3 +638,15 @@ Scripts adicionados para essa prova rápida:
 - `Assets/Scripts/Gameplay/CourtSideTrigger.cs`
 
 Com isso, já dá para jogar online sem arte final.
+
+---
+
+## 5) Não há scenes prontas no repositório (intencional)
+
+Para acelerar prova de funcionamento, use uma cena vazia chamada `QuickPlay.unity` e adicione:
+
+- `QuickPlaySceneBuilder` (cria `NetworkManager`, `ScoreManager`, `SpawnManager` e HUD mínimos em runtime)
+- seus prefabs básicos de `NetworkPlayer` e `NetworkBall`
+- chão/rede com colliders conforme seção de Blobs
+
+Objetivo: validar que a partida online sobe, jogadores entram e o loop de ponto funciona.
