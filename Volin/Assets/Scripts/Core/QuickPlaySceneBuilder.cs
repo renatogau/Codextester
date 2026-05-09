@@ -2,10 +2,10 @@ using ArcadeVolley.Data;
 using ArcadeVolley.Gameplay;
 using ArcadeVolley.Networking;
 using ArcadeVolley.UI;
-using TMPro;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace ArcadeVolley.Core
 {
@@ -47,9 +47,11 @@ namespace ArcadeVolley.Core
             {
                 var canvas = new GameObject("HUD");
                 canvas.AddComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+                canvas.AddComponent<CanvasScaler>();
+                canvas.AddComponent<GraphicRaycaster>();
 
-                var scoreText = CreateTmpText("ScoreText", canvas.transform, new Vector2(0, -40));
-                var pingText = CreateTmpText("PingText", canvas.transform, new Vector2(0, -80));
+                var scoreText = CreateUiText("ScoreText", canvas.transform, new Vector2(0, -40));
+                var pingText = CreateUiText("PingText", canvas.transform, new Vector2(0, -80));
 
                 var hud = canvas.AddComponent<HudUI>();
                 SetPrivateField(hud, "scoreText", scoreText);
@@ -58,13 +60,15 @@ namespace ArcadeVolley.Core
             }
         }
 
-        private static TextMeshProUGUI CreateTmpText(string name, Transform parent, Vector2 anchoredPos)
+        private static Text CreateUiText(string name, Transform parent, Vector2 anchoredPos)
         {
             var go = new GameObject(name);
             go.transform.SetParent(parent, false);
-            var text = go.AddComponent<TextMeshProUGUI>();
-            text.fontSize = 36;
-            text.alignment = TextAlignmentOptions.Center;
+            var text = go.AddComponent<Text>();
+            text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            text.fontSize = 32;
+            text.alignment = TextAnchor.MiddleCenter;
+            text.color = Color.white;
             text.text = "...";
 
             var rect = go.GetComponent<RectTransform>();

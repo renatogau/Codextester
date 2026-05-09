@@ -555,7 +555,7 @@ namespace ArcadeVolley.UI
    - Unity Transport
    - Input System
    - (Opcional) Lobby, Relay, Authentication, Core
-   - TextMeshPro
+   - uGUI (Unity UI)
 3. Em **Project Settings > Player > Active Input Handling**: `Input System Package (New)`.
 4. Criar cenas `MainMenu` e `Game`.
 5. Na cena `Game`:
@@ -582,7 +582,7 @@ namespace ArcadeVolley.UI
     - input para código da sala
     - chamar `LobbyRelayService`.
 11. UI HUD:
-    - texto de placar e ping
+    - texto de placar e ping (usando `UnityEngine.UI.Text`)
     - vincular `HudUI` ao `ScoreManager`.
 
 ---

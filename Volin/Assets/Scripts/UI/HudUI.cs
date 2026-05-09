@@ -1,7 +1,7 @@
 using ArcadeVolley.Gameplay;
-using TMPro;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
+using UnityEngine.UI;
 using UnityEngine;
 
 namespace ArcadeVolley.UI
@@ -9,8 +9,8 @@ namespace ArcadeVolley.UI
     public class HudUI : MonoBehaviour
     {
         [SerializeField] private ScoreManager scoreManager;
-        [SerializeField] private TextMeshProUGUI scoreText;
-        [SerializeField] private TextMeshProUGUI pingText;
+        [SerializeField] private Text scoreText;
+        [SerializeField] private Text pingText;
 
         private void Update()
         {
